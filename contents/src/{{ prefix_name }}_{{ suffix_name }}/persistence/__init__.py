@@ -21,6 +21,18 @@ async def close_db() -> None:
         _engine = None
 
 
+async def ensure_schema() -> None:
+    # Creates any missing tables for entities registered on Base.metadata.
+    # Callers must import their model modules first so the entities are
+    # registered on Base; replace with real migrations as the domain solidifies.
+    if _engine is None:
+        raise RuntimeError("Database not initialized — call init_db() first")
+    from .models import Base
+
+    async with _engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+
+
 def get_session() -> AsyncSession:
     if _session_factory is None:
         raise RuntimeError("Database not initialized — call init_db() first")

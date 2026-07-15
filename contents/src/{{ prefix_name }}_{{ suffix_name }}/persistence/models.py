@@ -1,13 +1,8 @@
-from sqlalchemy import String
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy.orm import DeclarativeBase
 
 
+# Consuming archetypes/services register their entities on this Base:
+# subclass it in your own modules, and import those modules before
+# ensure_schema() so the tables land on Base.metadata.
 class Base(DeclarativeBase):
     pass
-
-
-class {{ PrefixName }}(Base):
-    __tablename__ = "{{ prefix_name }}s"
-
-    id: Mapped[str] = mapped_column(String(36), primary_key=True)
-    display_name: Mapped[str] = mapped_column(String(255), nullable=False)
