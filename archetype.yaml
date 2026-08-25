@@ -1,0 +1,14 @@
+---
+description: "Python PostgreSQL Persistence — SQLAlchemy + Alembic + asyncpg persistence module for uv services"
+summary: >
+  Generates persistence package with SQLAlchemy async engine, Alembic migrations,
+  and a base model. Consumed as a library by Python service archetypes.
+authors: ["Jimmie Fulton <jimmie@ybor.ai>"]
+tags: ["library", "python", "persistence", "postgresql", "sqlalchemy", "alembic"]
+
+requires:
+  archetect: "3.0.0"
+
+templating:
+  trim_blocks: true
+  lstrip_blocks: true
